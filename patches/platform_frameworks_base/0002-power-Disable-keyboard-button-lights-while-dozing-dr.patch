@@ -1,7 +1,7 @@
-From c7329117006efae651d4adc315cb5663fb62e2e6 Mon Sep 17 00:00:00 2001
+From 3706f2a1c164e76b4c706a528bc7ac4894fd96d3 Mon Sep 17 00:00:00 2001
 From: Steve Kondik <steve@cyngn.com>
 Date: Sat, 3 Jan 2015 05:13:26 -0800
-Subject: [PATCH 03/16] power: Disable keyboard/button lights while
+Subject: [PATCH 02/14] power: Disable keyboard/button lights while
  dozing/dreaming
 
  * With hardkeys and doze mode enabled, entering suspend results in
@@ -10,15 +10,15 @@ Subject: [PATCH 03/16] power: Disable keyboard/button lights while
 
 Change-Id: I7f1fc35a1573717d1ea101a07c4171d6f66d1553
 ---
- services/core/java/com/android/server/power/PowerManagerService.java | 2 +-
+ .../core/java/com/android/server/power/PowerManagerService.java | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/services/core/java/com/android/server/power/PowerManagerService.java b/services/core/java/com/android/server/power/PowerManagerService.java
-index 1ced53f..9edf6fc 100644
+index a9e4cda02ae..4d7c6d24509 100644
 --- a/services/core/java/com/android/server/power/PowerManagerService.java
 +++ b/services/core/java/com/android/server/power/PowerManagerService.java
-@@ -1947,7 +1947,7 @@ public final class PowerManagerService extends SystemService
-                 final boolean userInactiveOverride = mUserInactiveOverrideFromWindowManager;
+@@ -1960,7 +1960,7 @@ public final class PowerManagerService extends SystemService
+                 final long nextProfileTimeout = getNextProfileTimeoutLocked(now);
  
                  mUserActivitySummary = 0;
 -                if (mLastUserActivityTime >= mLastWakeTime) {
@@ -27,5 +27,5 @@ index 1ced53f..9edf6fc 100644
                              + screenOffTimeout - screenDimDuration;
                      if (now < nextTimeout) {
 -- 
-2.7.4
+2.17.1
 
