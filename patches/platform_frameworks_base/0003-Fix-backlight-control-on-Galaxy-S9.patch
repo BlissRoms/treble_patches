@@ -1,4 +1,4 @@
-From 9ae6ae97637638189f9a8c632f07f0272ec22c73 Mon Sep 17 00:00:00 2001
+From 7164f8922e70616258467a4c3ed74648efd4635e Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 24 Mar 2018 08:01:48 +0100
 Subject: [PATCH 03/14] Fix backlight control on Galaxy S9(+)

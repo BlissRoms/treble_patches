@@ -1,4 +1,4 @@
-From 3706f2a1c164e76b4c706a528bc7ac4894fd96d3 Mon Sep 17 00:00:00 2001
+From 8478f462f9f11b38a10fd24c265a25504f67f8ba Mon Sep 17 00:00:00 2001
 From: Steve Kondik <steve@cyngn.com>
 Date: Sat, 3 Jan 2015 05:13:26 -0800
 Subject: [PATCH 02/14] power: Disable keyboard/button lights while
