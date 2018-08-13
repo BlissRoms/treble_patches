@@ -1,7 +1,7 @@
-From fb7d17fad6ee79602330c669d7ce835561be0fb1 Mon Sep 17 00:00:00 2001
+From ab635fa78777748f2b2245b34bd76204bffbd718 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <pierre-hugues.husson@softathome.com>
 Date: Thu, 7 Jun 2018 13:36:51 +0200
-Subject: [PATCH 06/14] S9 brightness override only for screen
+Subject: [PATCH 05/14] S9 brightness override only for screen
 
 ---
  .../com/android/server/lights/LightsService.java     | 12 +++++++-----

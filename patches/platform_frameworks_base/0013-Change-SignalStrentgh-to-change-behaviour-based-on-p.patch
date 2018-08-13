@@ -1,7 +1,7 @@
-From ff10685c75c5aa837ce70cb572ec5180a7f496d2 Mon Sep 17 00:00:00 2001
+From bc7bbdb07645f4ab45ce18424c43d9aa066c6fba Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 6 Aug 2018 20:01:44 +0200
-Subject: [PATCH 14/14] Change SignalStrentgh to change behaviour based on
+Subject: [PATCH 13/14] Change SignalStrentgh to change behaviour based on
  property
 
 Change-Id: I9e8bec3dd41ecc983e007f6d00157170ac0a3e28
