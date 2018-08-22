@@ -13,7 +13,7 @@ Essential 8.1 firmware requires this
  3 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/target/board/generic_arm64_ab/BoardConfig.mk b/target/board/generic_arm64_ab/BoardConfig.mk
-index fc6b58284b..820019676a 100644
+index fc6b582..8200196 100644
 --- a/target/board/generic_arm64_ab/BoardConfig.mk
 +++ b/target/board/generic_arm64_ab/BoardConfig.mk
 @@ -33,7 +33,7 @@ TARGET_NO_RECOVERY := true
@@ -26,7 +26,7 @@ index fc6b58284b..820019676a 100644
  
  # Set this to create /cache mount point for non-A/B devices that mounts /cache.
 diff --git a/target/board/generic_arm64_ab/sepolicy/file.te b/target/board/generic_arm64_ab/sepolicy/file.te
-index 7adfdfa4e6..46455339a0 100644
+index 7adfdfa..4645533 100644
 --- a/target/board/generic_arm64_ab/sepolicy/file.te
 +++ b/target/board/generic_arm64_ab/sepolicy/file.te
 @@ -1,5 +1,6 @@
@@ -37,7 +37,7 @@ index 7adfdfa4e6..46455339a0 100644
  
  # Default type for anything under /firmware.
 diff --git a/target/board/generic_arm64_ab/sepolicy/file_contexts b/target/board/generic_arm64_ab/sepolicy/file_contexts
-index 0a80559e17..92a4ff8726 100644
+index 0a80559..92a4ff8 100644
 --- a/target/board/generic_arm64_ab/sepolicy/file_contexts
 +++ b/target/board/generic_arm64_ab/sepolicy/file_contexts
 @@ -2,6 +2,7 @@
@@ -49,5 +49,5 @@ index 0a80559e17..92a4ff8726 100644
  /dsp                    u:object_r:rootfs:s0
  
 -- 
-2.17.1
+2.7.4
 
