@@ -1,0 +1,54 @@
+From c1b3a197dff1d1bd37aaddce051fc11ddbb41549 Mon Sep 17 00:00:00 2001
+From: Koushik Dutta <koushd@gmail.com>
+Date: Wed, 23 Aug 2017 16:13:18 +0200
+Subject: [PATCH] Revert "Add roomservice"
+
+This reverts commit 17246d24480f9b1f2278d9b785e989d1d2597a7c.
+---
+ envsetup.sh | 23 -----------------------
+ 1 file changed, 23 deletions(-)
+
+diff --git a/envsetup.sh b/envsetup.sh
+index 5f45a11574..d8cf3c882f 100644
+--- a/envsetup.sh
++++ b/envsetup.sh
+@@ -632,20 +632,6 @@ function lunch()
+     fi
+ 
+     check_product $product
+-    if [ $? -ne 0 ]
+-    then
+-        # if we can't find a product, try to grab it off the BlissRoms GitHub
+-        T=$(gettop)
+-        cd $T > /dev/null
+-        vendor/bliss/build/tools/roomservice.py $product
+-        cd - > /dev/null
+-        check_product $product
+-    else
+-        T=$(gettop)
+-        cd $T > /dev/null
+-        vendor/bliss/build/tools/roomservice.py $product true
+-        cd - > /dev/null
+-    fi
+ 
+     TARGET_PRODUCT=$product \
+     TARGET_BUILD_VARIANT=$variant \
+@@ -653,15 +639,6 @@ function lunch()
+     build_build_var_cache
+     if [ $? -ne 0 ]
+     then
+-        echo
+-        echo "** Don't have a product spec for: '$product'"
+-        echo "** Do you have the right repo manifest?"
+-        product=
+-    fi
+-
+-    if [ -z "$product" -o -z "$variant" ]
+-    then
+-        echo
+         return 1
+     fi
+ 
+-- 
+2.17.1
+
