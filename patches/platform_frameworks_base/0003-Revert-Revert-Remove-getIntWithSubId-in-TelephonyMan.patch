@@ -1,22 +1,22 @@
-From eee4d12d38bdbdab39abcd9c280eda864fd26855 Mon Sep 17 00:00:00 2001
+From 76ad65fa9d4689eed28b24b9ba55059389a6cf96 Mon Sep 17 00:00:00 2001
 From: jhenrique09 <jhenrique09.mcz@hotmail.com>
 Date: Sat, 11 Aug 2018 13:40:00 -0400
-Subject: [PATCH] Revert "Revert "Remove getIntWithSubId in TelephonyManager.""
+Subject: [PATCH 03/26] Revert "Revert "Remove getIntWithSubId in
+ TelephonyManager.""
 
 This reverts commit e788decb1b366a9df9683d86314ea4cf22a10d74.
 ---
- .../android/telephony/TelephonyManager.java   | 39 -------------------
+ .../java/android/telephony/TelephonyManager.java   | 39 ----------------------
  1 file changed, 39 deletions(-)
 
 diff --git a/telephony/java/android/telephony/TelephonyManager.java b/telephony/java/android/telephony/TelephonyManager.java
-index 10dc43ae539..487490c194b 100644
+index 3ecb6bb..b916a79 100644
 --- a/telephony/java/android/telephony/TelephonyManager.java
 +++ b/telephony/java/android/telephony/TelephonyManager.java
-@@ -6629,45 +6629,6 @@ public class TelephonyManager {
-         return false;
+@@ -6633,45 +6633,6 @@ public class TelephonyManager {
      }
  
--    /**
+     /**
 -     * This function retrieves value for setting "name+subId", and if that is not found
 -     * retrieves value for setting "name", and if that is not found throws
 -     * SettingNotFoundException
@@ -55,9 +55,10 @@ index 10dc43ae539..487490c194b 100644
 -        }
 -    }
 -
-     /**
+-    /**
       * Returns the IMS Registration Status for a particular Subscription ID.
       *
+      * @param subId Subscription ID
 -- 
-2.17.1
+2.7.4
 

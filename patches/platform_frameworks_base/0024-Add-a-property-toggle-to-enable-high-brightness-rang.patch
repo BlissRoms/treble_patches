@@ -1,7 +1,7 @@
-From 8a822d5e7de060a39d9cce130e2620e148486434 Mon Sep 17 00:00:00 2001
+From b9e8f8e4bb881dbbe1916512fa9ddbf52e603572 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 27 Aug 2018 00:47:13 +0200
-Subject: [PATCH 22/24] Add a property toggle to enable high brightness range
+Subject: [PATCH 24/26] Add a property toggle to enable high brightness range
  on samsung device
 
 ---

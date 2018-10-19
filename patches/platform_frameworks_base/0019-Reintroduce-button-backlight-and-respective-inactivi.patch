@@ -1,7 +1,7 @@
-From 673e875be80b6341ed2f644c8f691dc36c383023 Mon Sep 17 00:00:00 2001
+From 4b97606860972babc31af062db1a1b8345942f28 Mon Sep 17 00:00:00 2001
 From: Ricardo Cerqueira <cyanogenmod@cerqueira.org>
 Date: Fri, 23 Nov 2012 14:23:16 +0000
-Subject: [PATCH 17/24] Reintroduce button-backlight (and respective inactivity
+Subject: [PATCH 19/26] Reintroduce button-backlight (and respective inactivity
  timeout)
 
 The power manager rewrite from Change I1d7a52e98f0449f76d70bf421f6a7f245957d1d7
@@ -14,12 +14,12 @@ until upstream does their own implementation
 
 Change-Id: I6094c446e0b8c23f57d30652a3cbd35dee5e821a
 ---
- .../android/server/display/DisplayPowerController.java    | 11 +++++++++++
- .../com/android/server/power/PowerManagerService.java     | 15 +++++++++++++++
- 2 files changed, 26 insertions(+)
+ .../com/android/server/display/DisplayPowerController.java   | 11 +++++++++++
+ .../java/com/android/server/power/PowerManagerService.java   | 12 ++++++++++++
+ 2 files changed, 23 insertions(+)
 
 diff --git a/services/core/java/com/android/server/display/DisplayPowerController.java b/services/core/java/com/android/server/display/DisplayPowerController.java
-index 99412c5..bb6f65c 100644
+index db3368a..1f96902 100644
 --- a/services/core/java/com/android/server/display/DisplayPowerController.java
 +++ b/services/core/java/com/android/server/display/DisplayPowerController.java
 @@ -21,6 +21,7 @@ import com.android.internal.app.IBatteryStats;
@@ -30,7 +30,7 @@ index 99412c5..bb6f65c 100644
  
  import android.animation.Animator;
  import android.animation.ObjectAnimator;
-@@ -141,6 +142,9 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
+@@ -144,6 +145,9 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
      // Battery stats.
      private final IBatteryStats mBatteryStats;
  
@@ -40,7 +40,7 @@ index 99412c5..bb6f65c 100644
      // The sensor manager.
      private final SensorManager mSensorManager;
  
-@@ -374,6 +378,7 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
+@@ -387,6 +391,7 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
          mCallbacks = callbacks;
  
          mBatteryStats = BatteryStatsService.getService();
@@ -48,7 +48,7 @@ index 99412c5..bb6f65c 100644
          mSensorManager = sensorManager;
          mWindowManagerPolicy = LocalServices.getService(WindowManagerPolicy.class);
          mBlanker = blanker;
-@@ -769,6 +774,12 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
+@@ -837,6 +842,12 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
          // Use zero brightness when screen is off.
          if (state == Display.STATE_OFF) {
              brightness = PowerManager.BRIGHTNESS_OFF;
@@ -62,23 +62,20 @@ index 99412c5..bb6f65c 100644
  
          // Always use the VR brightness when in the VR state.
 diff --git a/services/core/java/com/android/server/power/PowerManagerService.java b/services/core/java/com/android/server/power/PowerManagerService.java
-index 697801f..9b8584e 100644
+index d39401d..b325810 100644
 --- a/services/core/java/com/android/server/power/PowerManagerService.java
 +++ b/services/core/java/com/android/server/power/PowerManagerService.java
-@@ -222,6 +222,12 @@ public final class PowerManagerService extends SystemService
-     // Persistent property for last reboot reason
-     private static final String LAST_REBOOT_PROPERTY = "persist.sys.boot.reason";
+@@ -230,6 +230,9 @@ public final class PowerManagerService extends SystemService
+ 
+     private static final float PROXIMITY_NEAR_THRESHOLD = 5.0f;
  
 +    // Add button light timeout
 +    private static final int BUTTON_ON_DURATION = 5 * 1000;
 +
-+    // File location for last reboot reason
-+    private static final String LAST_REBOOT_LOCATION = "/data/misc/reboot/last_reboot_reason";
-+
      private final Context mContext;
      private final ServiceThread mHandlerThread;
      private final PowerManagerHandler mHandler;
-@@ -242,6 +248,7 @@ public final class PowerManagerService extends SystemService
+@@ -250,6 +253,7 @@ public final class PowerManagerService extends SystemService
      private SettingsObserver mSettingsObserver;
      private DreamManagerInternal mDreamManager;
      private Light mAttentionLight;
@@ -86,7 +83,7 @@ index 697801f..9b8584e 100644
  
      private final Object mLock = LockGuard.installNewLock(LockGuard.INDEX_POWER);
  
-@@ -770,6 +777,7 @@ public final class PowerManagerService extends SystemService
+@@ -792,6 +796,7 @@ public final class PowerManagerService extends SystemService
  
              mLightsManager = getLocalService(LightsManager.class);
              mAttentionLight = mLightsManager.getLight(LightsManager.LIGHT_ID_ATTENTION);
@@ -94,7 +91,7 @@ index 697801f..9b8584e 100644
  
              // Initialize display power management.
              mDisplayManagerInternal.initPowerManagement(
-@@ -1953,6 +1961,7 @@ public final class PowerManagerService extends SystemService
+@@ -1997,6 +2002,7 @@ public final class PowerManagerService extends SystemService
                  final long screenOffTimeout = getScreenOffTimeoutLocked(sleepTimeout);
                  final long screenDimDuration = getScreenDimDurationLocked(screenOffTimeout);
                  final boolean userInactiveOverride = mUserInactiveOverrideFromWindowManager;
@@ -102,7 +99,7 @@ index 697801f..9b8584e 100644
                  final long nextProfileTimeout = getNextProfileTimeoutLocked(now);
  
                  mUserActivitySummary = 0;
-@@ -1960,6 +1969,12 @@ public final class PowerManagerService extends SystemService
+@@ -2004,6 +2010,12 @@ public final class PowerManagerService extends SystemService
                      nextTimeout = mLastUserActivityTime
                              + screenOffTimeout - screenDimDuration;
                      if (now < nextTimeout) {

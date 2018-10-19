@@ -1,0 +1,28 @@
+From 06588b0051026c442e024a832ea29b991ff6525c Mon Sep 17 00:00:00 2001
+From: Jackeagle <jackeagle102@gmail.com>
+Date: Thu, 18 Oct 2018 04:55:17 -0400
+Subject: [PATCH 01/26] Revert "Telephony: Stop using rssnr, it falsly shows
+ wrong signal bars"
+
+This reverts commit b9ff83d0b1d5a81d55057ae2fa892e5d0f1083be.
+---
+ telephony/java/android/telephony/SignalStrength.java | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/telephony/java/android/telephony/SignalStrength.java b/telephony/java/android/telephony/SignalStrength.java
+index 55c0c77..4e56396 100644
+--- a/telephony/java/android/telephony/SignalStrength.java
++++ b/telephony/java/android/telephony/SignalStrength.java
+@@ -897,9 +897,6 @@ public class SignalStrength implements Parcelable {
+                 + rsrpIconLevel + " snrIconLevel:" + snrIconLevel
+                 + " lteRsrpBoost:" + mLteRsrpBoost);
+ 
+-	/* Ignore RSSNR for now */
+-	if(rsrpIconLevel != -1) return rsrpIconLevel;
+-
+         /* Choose a measurement type to use for notification */
+         if (snrIconLevel != -1 && rsrpIconLevel != -1) {
+             /*
+-- 
+2.7.4
+
