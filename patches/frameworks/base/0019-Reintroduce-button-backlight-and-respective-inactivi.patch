@@ -1,4 +1,4 @@
-From 4b97606860972babc31af062db1a1b8345942f28 Mon Sep 17 00:00:00 2001
+From 2beeca83b6ef8837355d84c5939ee543d6d2701f Mon Sep 17 00:00:00 2001
 From: Ricardo Cerqueira <cyanogenmod@cerqueira.org>
 Date: Fri, 23 Nov 2012 14:23:16 +0000
 Subject: [PATCH 19/26] Reintroduce button-backlight (and respective inactivity
@@ -14,12 +14,12 @@ until upstream does their own implementation
 
 Change-Id: I6094c446e0b8c23f57d30652a3cbd35dee5e821a
 ---
- .../com/android/server/display/DisplayPowerController.java   | 11 +++++++++++
- .../java/com/android/server/power/PowerManagerService.java   | 12 ++++++++++++
+ .../server/display/DisplayPowerController.java       | 11 +++++++++++
+ .../android/server/power/PowerManagerService.java    | 12 ++++++++++++
  2 files changed, 23 insertions(+)
 
 diff --git a/services/core/java/com/android/server/display/DisplayPowerController.java b/services/core/java/com/android/server/display/DisplayPowerController.java
-index db3368a..1f96902 100644
+index a09c426d7fa..4a727dc94a3 100644
 --- a/services/core/java/com/android/server/display/DisplayPowerController.java
 +++ b/services/core/java/com/android/server/display/DisplayPowerController.java
 @@ -21,6 +21,7 @@ import com.android.internal.app.IBatteryStats;
@@ -62,7 +62,7 @@ index db3368a..1f96902 100644
  
          // Always use the VR brightness when in the VR state.
 diff --git a/services/core/java/com/android/server/power/PowerManagerService.java b/services/core/java/com/android/server/power/PowerManagerService.java
-index d39401d..b325810 100644
+index d39401ddecd..b32581046f5 100644
 --- a/services/core/java/com/android/server/power/PowerManagerService.java
 +++ b/services/core/java/com/android/server/power/PowerManagerService.java
 @@ -230,6 +230,9 @@ public final class PowerManagerService extends SystemService
@@ -113,5 +113,5 @@ index d39401d..b325810 100644
                      } else {
                          nextTimeout = mLastUserActivityTime + screenOffTimeout;
 -- 
-2.7.4
+2.17.1
 
