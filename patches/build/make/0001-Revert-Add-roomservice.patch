@@ -1,15 +1,17 @@
-From c1b3a197dff1d1bd37aaddce051fc11ddbb41549 Mon Sep 17 00:00:00 2001
-From: Koushik Dutta <koushd@gmail.com>
-Date: Wed, 23 Aug 2017 16:13:18 +0200
+From 1f6865d33d38d2d903cd08243449a46867256210 Mon Sep 17 00:00:00 2001
+From: Jackeagle <jackeagle102@gmail.com>
+Date: Sat, 17 Nov 2018 08:32:54 -0700
 Subject: [PATCH] Revert "Add roomservice"
 
 This reverts commit 17246d24480f9b1f2278d9b785e989d1d2597a7c.
+
+Change-Id: I2aca743bd57b64dc40ff8f5376ef6e11b79d1788
 ---
  envsetup.sh | 23 -----------------------
  1 file changed, 23 deletions(-)
 
 diff --git a/envsetup.sh b/envsetup.sh
-index 5f45a11574..d8cf3c882f 100644
+index 5f45a1157..d8cf3c882 100644
 --- a/envsetup.sh
 +++ b/envsetup.sh
 @@ -632,20 +632,6 @@ function lunch()

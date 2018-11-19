@@ -1,0 +1,134 @@
+From 797c4020f25fb4a76dee82f5fc7008aada330d2f Mon Sep 17 00:00:00 2001
+From: SpiritCroc <dev@spiritcroc.de>
+Date: Sun, 11 Nov 2018 14:59:35 -0700
+Subject: [PATCH 01/26] Utils: Import restart systemui api
+
+Change-Id: Ief06016032e14fe15ec8348722546c54e0d379c7
+---
+ .../internal/util/omni/DeviceUtils.java       | 61 +++++++++++++++++++
+ core/res/res/values/bliss_strings.xml         |  4 ++
+ core/res/res/values/bliss_symbols.xml         |  4 ++
+ 3 files changed, 69 insertions(+)
+
+diff --git a/core/java/com/android/internal/util/omni/DeviceUtils.java b/core/java/com/android/internal/util/omni/DeviceUtils.java
+index 811b52d57cc..59db7500a1c 100644
+--- a/core/java/com/android/internal/util/omni/DeviceUtils.java
++++ b/core/java/com/android/internal/util/omni/DeviceUtils.java
+@@ -15,8 +15,12 @@
+ */
+ package com.android.internal.util.omni;
+ 
++import android.app.ActivityManager;
++import android.app.AlertDialog;
++import android.app.IActivityManager;
+ import android.bluetooth.BluetoothAdapter;
+ import android.content.Context;
++import android.content.DialogInterface;
+ import android.content.pm.ApplicationInfo;
+ import android.content.pm.PackageInfo;
+ import android.content.pm.PackageManager;
+@@ -29,6 +33,7 @@ import android.hardware.camera2.CameraManager;
+ import android.hardware.SensorManager;
+ import android.net.ConnectivityManager;
+ import android.nfc.NfcAdapter;
++import android.os.AsyncTask;
+ import android.os.RemoteException;
+ import android.os.SystemProperties;
+ import android.os.Vibrator;
+@@ -45,6 +50,7 @@ import com.android.internal.telephony.PhoneConstants;
+ import static android.hardware.Sensor.TYPE_LIGHT;
+ import static android.hardware.Sensor.TYPE_PROXIMITY;
+ 
++import com.android.internal.R;
+ import java.util.List;
+ import java.util.Locale;
+ 
+@@ -221,4 +227,59 @@ public class DeviceUtils {
+             e.printStackTrace();
+         }
+     }
++
++    public static void restartSystemUi(Context context) {
++        new RestartSystemUiTask(context).execute();
++    }
++
++     public static void showSystemUiRestartDialog(Context context) {
++        new AlertDialog.Builder(context)
++                .setTitle(R.string.systemui_restart_title)
++                .setMessage(R.string.systemui_restart_message)
++                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
++                    public void onClick(DialogInterface dialog, int id) {
++                        restartSystemUi(context);
++                    }
++                })
++                .setNegativeButton(R.string.cancel, null)
++                .show();
++    }
++
++     private static class RestartSystemUiTask extends AsyncTask<Void, Void, Void> {
++         private Context mContext;
++         public RestartSystemUiTask(Context context) {
++            super();
++            mContext = context;
++        }
++
++         @Override
++        protected Void doInBackground(Void... params) {
++            try {
++                ActivityManager am =
++                        (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
++                IActivityManager ams = ActivityManager.getService();
++                for (ActivityManager.RunningAppProcessInfo app: am.getRunningAppProcesses()) {
++                    if ("com.android.systemui".equals(app.processName)) {
++                        ams.killApplicationProcess(app.processName, app.uid);
++                        break;
++                    }
++                }
++                //Class ActivityManagerNative = Class.forName("android.app.ActivityManagerNative");
++                //Method getDefault = ActivityManagerNative.getDeclaredMethod("getDefault", null);
++                //Object amn = getDefault.invoke(null, null);
++                //Method killApplicationProcess = amn.getClass().getDeclaredMethod("killApplicationProcess", String.class, int.class);
++                //mContext.stopService(new Intent().setComponent(new ComponentName("com.android.systemui", "com.android.systemui.SystemUIService")));
++                //am.killBackgroundProcesses("com.android.systemui");
++                //for (ActivityManager.RunningAppProcessInfo app : am.getRunningAppProcesses()) {
++                //    if ("com.android.systemui".equals(app.processName)) {
++                //        killApplicationProcess.invoke(amn, app.processName, app.uid);
++                //        break;
++                //    }
++                //}
++            } catch (Exception e) {
++                e.printStackTrace();
++            }
++            return null;
++        }
++    }
+ }
+diff --git a/core/res/res/values/bliss_strings.xml b/core/res/res/values/bliss_strings.xml
+index 9ba4f1844ca..da16771ba18 100644
+--- a/core/res/res/values/bliss_strings.xml
++++ b/core/res/res/values/bliss_strings.xml
+@@ -54,4 +54,8 @@
+     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+     <string name="permdesc_fakePackageSignature">Allows the app to pretend to be a different app. Malicious applications might be able to use this to access private application data. Legitimate uses include an emulator pretending to be what it emulates. Grant this permission with caution only!</string>
+ 
++    <!-- SystemUI Restart -->
++    <string name="systemui_restart_title">SystemUI restart required</string>
++    <string name="systemui_restart_message">For all changes to take effect, a SystemUI restart is required. Restart SystemUI now?</string>
++
+ </resources>
+diff --git a/core/res/res/values/bliss_symbols.xml b/core/res/res/values/bliss_symbols.xml
+index 35d9555b2f9..f8e2bdb5bf6 100644
+--- a/core/res/res/values/bliss_symbols.xml
++++ b/core/res/res/values/bliss_symbols.xml
+@@ -145,4 +145,8 @@
+   <!-- Oreo's recents component activity -->
+   <java-symbol type="string" name="config_recentsComponentNameOreo" />
+ 
++  <!-- SystemUI Restart -->
++  <java-symbol type="string" name="systemui_restart_title" />
++  <java-symbol type="string" name="systemui_restart_message" />
++
+ </resources>
+-- 
+2.17.1
+

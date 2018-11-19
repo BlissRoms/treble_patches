@@ -1,4 +1,4 @@
-From bce6b073e39f1c12839debc4e1df55f992bf4409 Mon Sep 17 00:00:00 2001
+From a9b12570584788b9e4b1ee8a41cdc79f2cbf51e3 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 28 Nov 2017 18:28:04 +0100
 Subject: [PATCH 04/26] Relax requirement for visible flag to sdcards
@@ -9,11 +9,11 @@ FBE broke adoptable storage with SDCard, hence this need.
 
 Change-Id: Ia616671c03562d1eadaff5531a5c708a62d7ad3a
 ---
- services/core/java/com/android/server/StorageManagerService.java | 3 ++-
+ .../core/java/com/android/server/StorageManagerService.java    | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/services/core/java/com/android/server/StorageManagerService.java b/services/core/java/com/android/server/StorageManagerService.java
-index a35357f..14ca559 100644
+index a35357f2864..14ca559c306 100644
 --- a/services/core/java/com/android/server/StorageManagerService.java
 +++ b/services/core/java/com/android/server/StorageManagerService.java
 @@ -1178,7 +1178,8 @@ class StorageManagerService extends IStorageManager.Stub
@@ -27,5 +27,5 @@ index a35357f..14ca559 100644
              }
  
 -- 
-2.7.4
+2.17.1
 
