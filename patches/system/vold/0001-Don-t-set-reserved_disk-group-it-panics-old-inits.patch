@@ -1,7 +1,7 @@
-From 3651ff3f188d41e5e0be08f7488b9bcd129f44cd Mon Sep 17 00:00:00 2001
+From d4c643a08e4f931d507fa6ade7c0b739cc110d15 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 14 Aug 2018 20:53:12 +0200
-Subject: [PATCH 1/4] Don't set reserved_disk group, it panics old inits
+Subject: [PATCH 1/8] Don't set reserved_disk group, it panics old inits
 
 Change-Id: I9fecd1e5187048e321af181921ecd7e37ca1eae9
 Signed-off-by: Jackeagle <jackeagle102@gmail.com>

@@ -1,7 +1,7 @@
-From a44e1c7060944b61680d635bba3f3cf6c6ec0fc3 Mon Sep 17 00:00:00 2001
+From 4372ec71710387a0f6e5b7c89ba70727bf7e4626 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 19 Aug 2018 10:51:06 +0200
-Subject: [PATCH 15/24] idmap: Don't silently ignore RROs with same priority
+Subject: [PATCH 15/25] idmap: Don't silently ignore RROs with same priority
 
 Change-Id: I64a6899f1b30e0cd9e9a872b7ca83d831f038cbe
 ---

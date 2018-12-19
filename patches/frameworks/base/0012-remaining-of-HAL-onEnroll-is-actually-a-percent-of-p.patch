@@ -1,8 +1,8 @@
-From 934c4c7816086915410546c4737a1961b0e90ed7 Mon Sep 17 00:00:00 2001
+From f8037b63c7cc7a83ce0da9b7df1e4178fb60eada Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 2 Jul 2018 23:36:39 +0200
-Subject: [PATCH 12/24] [Galaxy S9] "remaining" of HAL onEnroll is actually a
- percent of progress
+Subject: [PATCH 12/25] "remaining" of HAL onEnroll is actually a percent of
+ progress
 
 ---
  .../com/android/server/fingerprint/FingerprintService.java  | 6 +++++-

@@ -1,7 +1,7 @@
-From 015d04e949b09a5687164d6187674e2f951d092f Mon Sep 17 00:00:00 2001
+From 1dd07f5d4a19be3fc5eabadfdf6c88114e4d9ebf Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Thu, 23 Aug 2018 23:39:16 +0200
-Subject: [PATCH 21/24] Switch samsung light fingerprint match to regexp, to
+Subject: [PATCH 19/25] Switch samsung light fingerprint match to regexp, to
  include Note9
 
 ---

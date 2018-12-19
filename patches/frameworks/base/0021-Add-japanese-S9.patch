@@ -1,7 +1,7 @@
-From 9874b4e728292d2cea21ffd61ca830544f1cf153 Mon Sep 17 00:00:00 2001
+From 820bf9262ad8d008b9c6351ead03316cbd66b4c4 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 28 Aug 2018 20:39:26 +0200
-Subject: [PATCH 23/24] Add japanese S9
+Subject: [PATCH 21/25] Add japanese S9
 
 ---
  .../core/java/com/android/server/lights/LightsService.java     | 3 ++-

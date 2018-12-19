@@ -1,7 +1,7 @@
-From 289ddb298f77979a6c11947f8a7401cc4ca752cf Mon Sep 17 00:00:00 2001
+From 719e0062eacfcd42108eb8256a775425fcc069b5 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 21 Aug 2018 22:24:02 +0200
-Subject: [PATCH 20/24] Don't wake IR HAL to the infinity and beyond
+Subject: [PATCH 18/25] Don't wake IR HAL to the infinity and beyond
 
 Change-Id: Ic538ab35ec9eb3ede43a277414b00c51a2efaed1
 Signed-off-by: Jackeagle <jackeagle102@gmail.com>

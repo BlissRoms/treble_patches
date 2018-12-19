@@ -1,7 +1,7 @@
-From e32a7aee2baed63892967cdf00ff3934e0030613 Mon Sep 17 00:00:00 2001
+From 611e5b0b5c891e4ceff24ebc2c4939569e1c5bca Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 20 Aug 2018 22:27:02 +0200
-Subject: [PATCH 19/24] It is okay not to have wifi in SystemUI (on FDE lock)
+Subject: [PATCH 17/25] It is okay not to have wifi in SystemUI (on FDE lock)
 
 ---
  .../src/com/android/settingslib/wifi/WifiTracker.java         | 2 +-
