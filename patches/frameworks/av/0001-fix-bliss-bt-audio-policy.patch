@@ -1,0 +1,91 @@
+From 7d2663664a67394db76104b637794f34e089b2aa Mon Sep 17 00:00:00 2001
+From: sanshu <279902746@qq.com>
+Date: Fri, 4 Jan 2019 00:52:31 +0800
+Subject: [PATCH] fix bliss bt audio policy
+
+Change-Id: Ie0acdb10a92620bc443c8ff2447ca45774f4ef52
+---
+ .../audiopolicy/enginedefault/src/Engine.cpp    | 17 +++++++++++++++--
+ .../managerdefault/AudioPolicyManager.cpp       |  2 +-
+ .../managerdefault/AudioPolicyManager.h         |  4 ++--
+ 3 files changed, 18 insertions(+), 5 deletions(-)
+
+diff --git a/services/audiopolicy/enginedefault/src/Engine.cpp b/services/audiopolicy/enginedefault/src/Engine.cpp
+index 7a4805b8d..b7de21131 100644
+--- a/services/audiopolicy/enginedefault/src/Engine.cpp
++++ b/services/audiopolicy/enginedefault/src/Engine.cpp
+@@ -522,6 +522,13 @@ audio_devices_t Engine::getDeviceForStrategyInt(routing_strategy strategy,
+     case STRATEGY_REROUTING:
+     case STRATEGY_MEDIA: {
+         uint32_t device2 = AUDIO_DEVICE_NONE;
++
++        if (isInCall() && (device == AUDIO_DEVICE_NONE)) {
++            // when in call, get the device for Phone strategy
++            device = getDeviceForStrategy(STRATEGY_PHONE);
++            break;
++        }
++
+         if (strategy != STRATEGY_SONIFICATION) {
+             // no sonification on remote submix (e.g. WFD)
+             if (availableOutputDevices.getDevice(AUDIO_DEVICE_OUT_REMOTE_SUBMIX,
+@@ -574,14 +581,20 @@ audio_devices_t Engine::getDeviceForStrategyInt(routing_strategy strategy,
+         if (device2 == AUDIO_DEVICE_NONE) {
+             device2 = availableOutputDevicesType & AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET;
+         }
+-        if ((device2 == AUDIO_DEVICE_NONE) && (strategy != STRATEGY_SONIFICATION)) {
++        if ((device2 == AUDIO_DEVICE_NONE) && (strategy != STRATEGY_SONIFICATION) &&
++                (device == AUDIO_DEVICE_NONE)) {
+             // no sonification on aux digital (e.g. HDMI)
+             device2 = availableOutputDevicesType & AUDIO_DEVICE_OUT_AUX_DIGITAL;
+         }
+-        if ((device2 == AUDIO_DEVICE_NONE) &&
++        if ((device2 == AUDIO_DEVICE_NONE) && (strategy != STRATEGY_SONIFICATION) &&
+                 (mForceUse[AUDIO_POLICY_FORCE_FOR_DOCK] == AUDIO_POLICY_FORCE_ANALOG_DOCK)) {
+             device2 = availableOutputDevicesType & AUDIO_DEVICE_OUT_ANLG_DOCK_HEADSET;
+         }
++        if ((device2 == AUDIO_DEVICE_NONE) && (strategy != STRATEGY_SONIFICATION) &&
++                (device == AUDIO_DEVICE_NONE)) {
++            // no sonification on WFD sink
++            device2 = availableOutputDevicesType & AUDIO_DEVICE_OUT_PROXY;
++        }
+         if (device2 == AUDIO_DEVICE_NONE) {
+             device2 = availableOutputDevicesType & AUDIO_DEVICE_OUT_SPEAKER;
+         }
+diff --git a/services/audiopolicy/managerdefault/AudioPolicyManager.cpp b/services/audiopolicy/managerdefault/AudioPolicyManager.cpp
+index 9d618b0f6..51654e838 100644
+--- a/services/audiopolicy/managerdefault/AudioPolicyManager.cpp
++++ b/services/audiopolicy/managerdefault/AudioPolicyManager.cpp
+@@ -3886,7 +3886,7 @@ uint32_t AudioPolicyManager::nextAudioPortGeneration()
+ #ifdef USE_XML_AUDIO_POLICY_CONF
+ // Treblized audio policy xml config will be located in /odm/etc or /vendor/etc.
+ static const char *kConfigLocationList[] =
+-        {"/odm/etc", "/vendor/etc", "/system/etc"};
++        {"/odm/etc", "/vendor/etc/audio", "/vendor/etc", "/system/etc"};
+ static const int kConfigLocationListSize =
+         (sizeof(kConfigLocationList) / sizeof(kConfigLocationList[0]));
+ 
+diff --git a/services/audiopolicy/managerdefault/AudioPolicyManager.h b/services/audiopolicy/managerdefault/AudioPolicyManager.h
+index 06425d069..074536954 100644
+--- a/services/audiopolicy/managerdefault/AudioPolicyManager.h
++++ b/services/audiopolicy/managerdefault/AudioPolicyManager.h
+@@ -394,7 +394,7 @@ protected:
+         // when a device is disconnected, checks if an output is not used any more and
+         // returns its handle if any.
+         // transfers the audio tracks and effects from one output thread to another accordingly.
+-        status_t checkOutputsForDevice(const sp<DeviceDescriptor>& devDesc,
++        virtual status_t checkOutputsForDevice(const sp<DeviceDescriptor>& devDesc,
+                                        audio_policy_dev_state_t state,
+                                        SortedVector<audio_io_handle_t>& outputs,
+                                        const String8& address);
+@@ -414,7 +414,7 @@ protected:
+         // must be called every time a condition that affects the output choice for a given strategy
+         // changes: connected device, phone state, force use...
+         // Must be called before updateDevicesAndOutputs()
+-        void checkOutputForStrategy(routing_strategy strategy);
++        virtual void checkOutputForStrategy(routing_strategy strategy);
+ 
+         // Same as checkOutputForStrategy() but for a all strategies in order of priority
+         void checkOutputForAllStrategies();
+-- 
+2.17.0
+
