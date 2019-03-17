@@ -1,7 +1,7 @@
-From 6220a49bebdc8a404690704ece96aa0893272832 Mon Sep 17 00:00:00 2001
+From ed2199875bd2357a8b9864dfa0beeec0f500b806 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Thu, 8 Nov 2018 23:04:03 +0100
-Subject: [PATCH 22/25] Re-order services so that it works even without qtaguid
+Subject: [PATCH 25/27] Re-order services so that it works even without qtaguid
 
 ---
  .../com/android/server/net/NetworkPolicyManagerService.java | 6 +++---

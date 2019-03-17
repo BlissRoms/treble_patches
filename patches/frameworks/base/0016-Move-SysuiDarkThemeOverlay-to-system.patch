@@ -1,7 +1,7 @@
-From a9838c7837a6ea073e5123e1afaafd2255c3a2ab Mon Sep 17 00:00:00 2001
+From 74d3cdda68ffefc73d337d865ab90fe8964bfd7e Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 19 Aug 2018 10:57:21 +0200
-Subject: [PATCH 16/25] Move SysuiDarkThemeOverlay to /system
+Subject: [PATCH 16/27] Move SysuiDarkThemeOverlay to /system
 
 Change-Id: I31b3edc5d1abcc1163a13e63c909fee9d27ff432
 ---

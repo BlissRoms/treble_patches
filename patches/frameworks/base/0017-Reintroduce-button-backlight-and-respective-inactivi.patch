@@ -1,0 +1,63 @@
+From 6fb8a9da588b864630a72bffd2d45c27aeb1cc56 Mon Sep 17 00:00:00 2001
+From: Ricardo Cerqueira <cyanogenmod@cerqueira.org>
+Date: Fri, 23 Nov 2012 14:23:16 +0000
+Subject: [PATCH 17/27] Reintroduce button-backlight (and respective inactivity
+ timeout)
+
+The power manager rewrite from Change I1d7a52e98f0449f76d70bf421f6a7f245957d1d7
+completely removed support for control of the button backlights, which makes
+all capacitive buttons out there stay dark. The commit message in that change
+mentions it hasn't been implemented _yet_, so this fix should be temporary
+until upstream does their own implementation
+
+[RC: Updated to 5.0]
+
+Change-Id: I6094c446e0b8c23f57d30652a3cbd35dee5e821a
+
+Conflicts:
+	services/core/java/com/android/server/power/PowerManagerService.java
+---
+ .../android/server/power/PowerManagerService.java   | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/services/core/java/com/android/server/power/PowerManagerService.java b/services/core/java/com/android/server/power/PowerManagerService.java
+index eaaa77600bc..e85d8adf21b 100644
+--- a/services/core/java/com/android/server/power/PowerManagerService.java
++++ b/services/core/java/com/android/server/power/PowerManagerService.java
+@@ -233,6 +233,12 @@ public final class PowerManagerService extends SystemService
+ 
+     private static final float PROXIMITY_NEAR_THRESHOLD = 5.0f;
+ 
++    // Add button light timeout
++    private static final int BUTTON_ON_DURATION = 5 * 1000;
++
++    // File location for last reboot reason
++    private static final String LAST_REBOOT_LOCATION = "/data/misc/reboot/last_reboot_reason";
++
+     private final Context mContext;
+     private final ServiceThread mHandlerThread;
+     private final PowerManagerHandler mHandler;
+@@ -2076,6 +2082,7 @@ public final class PowerManagerService extends SystemService
+                 final long screenOffTimeout = getScreenOffTimeoutLocked(sleepTimeout);
+                 final long screenDimDuration = getScreenDimDurationLocked(screenOffTimeout);
+                 final boolean userInactiveOverride = mUserInactiveOverrideFromWindowManager;
++                final int screenBrightness = mScreenBrightnessSettingDefault;
+                 final long nextProfileTimeout = getNextProfileTimeoutLocked(now);
+ 
+                 mUserActivitySummary = 0;
+@@ -2083,6 +2090,12 @@ public final class PowerManagerService extends SystemService
+                     nextTimeout = mLastUserActivityTime
+                             + screenOffTimeout - screenDimDuration;
+                     if (now < nextTimeout) {
++                        if (now > mLastUserActivityTime + BUTTON_ON_DURATION) {
++                            mButtonsLight.setBrightness(0);
++                        } else {
++                            mButtonsLight.setBrightness(screenBrightness);
++                            nextTimeout = now + BUTTON_ON_DURATION;
++                        }
+                         mUserActivitySummary = USER_ACTIVITY_SCREEN_BRIGHT;
+                         if (mWakefulness == WAKEFULNESS_AWAKE) {
+                             int buttonBrightness;
+-- 
+2.17.1
+

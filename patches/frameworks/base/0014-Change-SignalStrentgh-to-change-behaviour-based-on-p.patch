@@ -1,17 +1,19 @@
-From 186b2739f4d701418d2e3a7ebac4a4ecea390226 Mon Sep 17 00:00:00 2001
+From 6fcc14c6109e17cd47d007e6dd677d3ce5616bdd Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 6 Aug 2018 20:01:44 +0200
-Subject: [PATCH 14/25] Change SignalStrentgh to change behaviour based on
+Subject: [PATCH 14/27] Change SignalStrentgh to change behaviour based on
  property
 
 Change-Id: I940ed724047567ec5195ac93ea04574c3d92f70b
-Signed-off-by: Jackeagle <jackeagle102@gmail.com>
+
+Conflicts:
+	telephony/java/android/telephony/SignalStrength.java
 ---
- .../android/telephony/SignalStrength.java     | 39 +++++++++++++------
- 1 file changed, 27 insertions(+), 12 deletions(-)
+ .../android/telephony/SignalStrength.java     | 40 ++++++++++++-------
+ 1 file changed, 26 insertions(+), 14 deletions(-)
 
 diff --git a/telephony/java/android/telephony/SignalStrength.java b/telephony/java/android/telephony/SignalStrength.java
-index 55c0c778972..69bc6128da6 100644
+index 55c0c778972..ff906d330d4 100644
 --- a/telephony/java/android/telephony/SignalStrength.java
 +++ b/telephony/java/android/telephony/SignalStrength.java
 @@ -854,6 +854,7 @@ public class SignalStrength implements Parcelable {
@@ -22,10 +24,12 @@ index 55c0c778972..69bc6128da6 100644
          int rssiIconLevel = SIGNAL_STRENGTH_NONE_OR_UNKNOWN, rsrpIconLevel = -1, snrIconLevel = -1;
  
          if (mLteRsrp > MAX_LTE_RSRP || mLteRsrp < MIN_LTE_RSRP) {
-@@ -900,6 +901,32 @@ public class SignalStrength implements Parcelable {
- 	/* Ignore RSSNR for now */
- 	if(rsrpIconLevel != -1) return rsrpIconLevel;
+@@ -897,8 +898,31 @@ public class SignalStrength implements Parcelable {
+                 + rsrpIconLevel + " snrIconLevel:" + snrIconLevel
+                 + " lteRsrpBoost:" + mLteRsrpBoost);
  
+-	/* Ignore RSSNR for now */
+-	if(rsrpIconLevel != -1) return rsrpIconLevel;
 +        /* Valid values are (0-63, 99) as defined in TS 36.331 */
 +        // TODO the range here is probably supposed to be (0..31, 99). It's unclear if anyone relies
 +        // on the current incorrect range check, so this will be fixed in a future release with more
@@ -51,11 +55,10 @@ index 55c0c778972..69bc6128da6 100644
 +            if(rssiIconLevel == -1) rssiIconLevel = SIGNAL_STRENGTH_NONE_OR_UNKNOWN;
 +            return rssiIconLevel;
 +        }
-+
+ 
          /* Choose a measurement type to use for notification */
          if (snrIconLevel != -1 && rsrpIconLevel != -1) {
-             /*
-@@ -914,18 +941,6 @@ public class SignalStrength implements Parcelable {
+@@ -914,18 +938,6 @@ public class SignalStrength implements Parcelable {
  
          if (rsrpIconLevel != -1) return rsrpIconLevel;
  

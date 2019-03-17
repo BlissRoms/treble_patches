@@ -1,54 +1,65 @@
-From 611e5b0b5c891e4ceff24ebc2c4939569e1c5bca Mon Sep 17 00:00:00 2001
+From 90443b5a5c607a9312f717b43dbd44b0b6bbb084 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 20 Aug 2018 22:27:02 +0200
-Subject: [PATCH 17/25] It is okay not to have wifi in SystemUI (on FDE lock)
+Subject: [PATCH 19/27] It is okay not to have wifi in SystemUI (on FDE lock)
 
+Conflicts:
+	packages/SettingsLib/src/com/android/settingslib/wifi/WifiTracker.java
+	packages/SystemUI/src/com/android/systemui/statusbar/policy/WifiSignalController.java
+
+Change-Id: I567a4fc81a53a8d3a55acb6ee8aa979c5a38a4f8
 ---
- .../src/com/android/settingslib/wifi/WifiTracker.java         | 2 +-
- .../systemui/statusbar/policy/HotspotControllerImpl.java      | 1 +
- .../systemui/statusbar/policy/WifiSignalController.java       | 4 +++-
- 3 files changed, 5 insertions(+), 2 deletions(-)
+ .../src/com/android/settingslib/wifi/WifiTracker.java  |  2 +-
+ .../statusbar/policy/HotspotControllerImpl.java        |  1 +
+ .../statusbar/policy/WifiSignalController.java         | 10 +++++-----
+ 3 files changed, 7 insertions(+), 6 deletions(-)
 
 diff --git a/packages/SettingsLib/src/com/android/settingslib/wifi/WifiTracker.java b/packages/SettingsLib/src/com/android/settingslib/wifi/WifiTracker.java
-index d8f0886730d..76cd70d5c84 100644
+index 11c22eef5ad..1ca952aaee3 100644
 --- a/packages/SettingsLib/src/com/android/settingslib/wifi/WifiTracker.java
 +++ b/packages/SettingsLib/src/com/android/settingslib/wifi/WifiTracker.java
 @@ -207,7 +207,7 @@ public class WifiTracker implements LifecycleObserver, OnStart, OnStop, OnDestro
          mConnectivityManager = connectivityManager;
  
          // check if verbose logging developer option has been turned on or off
--        sVerboseLogging = (mWifiManager.getVerboseLoggingLevel() > 0);
+-        sVerboseLogging = (mWifiManager == null) ? false : (mWifiManager.getVerboseLoggingLevel() > 0);
 +        sVerboseLogging = mWifiManager != null ? (mWifiManager.getVerboseLoggingLevel() > 0) : false;
  
          mFilter = filter;
  
 diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/policy/HotspotControllerImpl.java b/packages/SystemUI/src/com/android/systemui/statusbar/policy/HotspotControllerImpl.java
-index 3c16329e6f1..050a9c5257e 100644
+index c44b385f505..e5696edb9e0 100644
 --- a/packages/SystemUI/src/com/android/systemui/statusbar/policy/HotspotControllerImpl.java
 +++ b/packages/SystemUI/src/com/android/systemui/statusbar/policy/HotspotControllerImpl.java
-@@ -113,6 +113,7 @@ public class HotspotControllerImpl implements HotspotController, WifiManager.Sof
+@@ -109,6 +109,7 @@ public class HotspotControllerImpl implements HotspotController, WifiManager.Sof
+      * @param shouldListen whether we should start listening to various wifi statuses
       */
      private void updateWifiStateListeners(boolean shouldListen) {
-         mWifiStateReceiver.setListening(shouldListen);
 +        if(mWifiManager == null) return;
          if (shouldListen) {
              mWifiManager.registerSoftApCallback(
                      this,
 diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/policy/WifiSignalController.java b/packages/SystemUI/src/com/android/systemui/statusbar/policy/WifiSignalController.java
-index e5e576d6b80..78b30500da7 100644
+index b83c6b88f8d..78b30500da7 100644
 --- a/packages/SystemUI/src/com/android/systemui/statusbar/policy/WifiSignalController.java
 +++ b/packages/SystemUI/src/com/android/systemui/statusbar/policy/WifiSignalController.java
-@@ -59,7 +59,9 @@ public class WifiSignalController extends
+@@ -59,11 +59,11 @@ public class WifiSignalController extends
          mHasMobileData = hasMobileData;
          Handler handler = new WifiHandler(Looper.getMainLooper());
          mWifiChannel = new AsyncChannel();
--        Messenger wifiMessenger = wifiManager.getWifiServiceMessenger();
+-        if (wifiManager != null) {
+-            Messenger wifiMessenger = wifiManager.getWifiServiceMessenger();
+-            if (wifiMessenger != null) {
+-                mWifiChannel.connect(context, handler, wifiMessenger);
+-            }
 +        Messenger wifiMessenger = null;
 +        if(wifiManager != null)
 +            wifiMessenger = wifiManager.getWifiServiceMessenger();
-         if (wifiMessenger != null) {
-             mWifiChannel.connect(context, handler, wifiMessenger);
++        if (wifiMessenger != null) {
++            mWifiChannel.connect(context, handler, wifiMessenger);
          }
+         // WiFi only has one state.
+         mCurrentState.iconGroup = mLastState.iconGroup = new IconGroup(
 -- 
 2.17.1
 
