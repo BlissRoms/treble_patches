@@ -1,7 +1,7 @@
-From 164b7dcc67770829a65b4de26f6662a87a4636f4 Mon Sep 17 00:00:00 2001
+From 98ab89f66725161127ac16b097e2cc493ac50ecf Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 14 Aug 2018 19:33:03 +0200
-Subject: [PATCH 2/3] Some kernel crashes when using too recent sdcardfs
+Subject: [PATCH 2/7] Some kernel crashes when using too recent sdcardfs
  options. Force everyone to old options
 
 Change-Id: Ia5cf1aa8dc07a0f4a78b4d8f760ca0944dabaa89
@@ -10,7 +10,7 @@ Change-Id: Ia5cf1aa8dc07a0f4a78b4d8f760ca0944dabaa89
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/sdcard/sdcard.cpp b/sdcard/sdcard.cpp
-index f8f1cbb455..15b66acf7b 100644
+index f8f1cbb45..15b66acf7 100644
 --- a/sdcard/sdcard.cpp
 +++ b/sdcard/sdcard.cpp
 @@ -102,7 +102,7 @@ static bool sdcardfs_setup(const std::string& source_path, const std::string& de
