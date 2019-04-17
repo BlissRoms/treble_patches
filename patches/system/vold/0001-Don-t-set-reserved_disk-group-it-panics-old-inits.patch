@@ -1,10 +1,12 @@
-From d4c643a08e4f931d507fa6ade7c0b739cc110d15 Mon Sep 17 00:00:00 2001
+From 73a4350598cca23f83f1ae0e3153a63209aa7d44 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 14 Aug 2018 20:53:12 +0200
-Subject: [PATCH 1/8] Don't set reserved_disk group, it panics old inits
+Subject: [PATCH 1/4] Don't set reserved_disk group, it panics old inits
 
-Change-Id: I9fecd1e5187048e321af181921ecd7e37ca1eae9
-Signed-off-by: Jackeagle <jackeagle102@gmail.com>
+Conflicts:
+	vold.rc
+
+Change-Id: Icce2d35a462dfe5ea5f05b5616febb72ab28d83a
 ---
  vold.rc | 1 -
  1 file changed, 1 deletion(-)

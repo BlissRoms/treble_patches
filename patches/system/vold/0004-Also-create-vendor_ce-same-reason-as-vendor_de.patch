@@ -1,7 +1,7 @@
-From 63c29054718759d24a43fadb8e3f68a409120502 Mon Sep 17 00:00:00 2001
+From b54608b7f7c3a16b03e1edd7cdabcb31f692c90b Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 20 Aug 2018 22:38:08 +0200
-Subject: [PATCH 4/8] Also create vendor_ce (same reason as vendor_de)
+Subject: [PATCH 4/4] Also create vendor_ce (same reason as vendor_de)
 
 ---
  Ext4Crypt.cpp | 2 ++
