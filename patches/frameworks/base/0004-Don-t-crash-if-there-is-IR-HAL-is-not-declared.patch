@@ -1,7 +1,7 @@
-From 1d2e505a0ef6c9fa413722133392f62c194e1831 Mon Sep 17 00:00:00 2001
+From cbdeffa0f4428fc5fd91f815c425af09545a5820 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Thu, 17 May 2018 20:28:35 +0200
-Subject: [PATCH 04/27] Don't crash if there is IR HAL is not declared
+Subject: [PATCH 04/28] Don't crash if there is IR HAL is not declared
 
 ---
  services/core/java/com/android/server/ConsumerIrService.java | 2 --
@@ -21,5 +21,5 @@ index 839629c6f82..0a0065a7b55 100644
          mParameter = AudioSystem.getParameters("audio_capability#irda_support");
      }
 -- 
-2.17.1
+2.21.0
 

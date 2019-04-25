@@ -1,7 +1,7 @@
-From 0ffac9ef7929dbfd6ebe437d09b9b26d342f410a Mon Sep 17 00:00:00 2001
+From 658be986bca32ad68dda0cbd2fed9ff684077b0a Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 30 May 2018 14:05:30 +0200
-Subject: [PATCH 05/27] Fix(?) #62
+Subject: [PATCH 05/28] Fix(?) #62
 
 ---
  .../src/com/android/keyguard/KeyguardUpdateMonitor.java      | 5 ++++-
@@ -24,5 +24,5 @@ index 2a3094fa4b1..5864d0f8e61 100644
  
          @Override
 -- 
-2.17.1
+2.21.0
 

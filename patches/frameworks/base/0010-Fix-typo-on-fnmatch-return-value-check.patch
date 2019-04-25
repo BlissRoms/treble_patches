@@ -1,7 +1,7 @@
-From d5f73ea1cc9283d3f4ab4851642c8b4ff6154a58 Mon Sep 17 00:00:00 2001
+From 7ce8bffed817e20a5f79fed31b62dfaa6e8ddebc Mon Sep 17 00:00:00 2001
 From: Song Fuchang <song.fc@gmail.com>
 Date: Sun, 17 Jun 2018 22:39:37 +0800
-Subject: [PATCH 10/27] Fix typo on fnmatch return value check
+Subject: [PATCH 10/28] Fix typo on fnmatch return value check
 
 ---
  cmds/idmap/scan.cpp | 2 +-
@@ -21,5 +21,5 @@ index 2be6d23ac78..0acff23d031 100644
  
          return (strcmp(propBuf, val) == 0);
 -- 
-2.17.1
+2.21.0
 
