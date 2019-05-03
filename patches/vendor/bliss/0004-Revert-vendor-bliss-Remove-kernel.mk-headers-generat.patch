@@ -1,7 +1,7 @@
-From d90fac6121821ac30cd915e4a36ff107d3709b54 Mon Sep 17 00:00:00 2001
+From a8351307b800908f687ddf5af9d76db797ad74b1 Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
 Date: Mon, 3 Dec 2018 10:56:07 -0500
-Subject: [PATCH 05/11] Revert "vendor/bliss: Remove kernel.mk headers
+Subject: [PATCH 04/17] Revert "vendor/bliss: Remove kernel.mk headers
  generation"
 
 This reverts commit 6a4c7c1258ffecc26324b034c9091373bf0272dd.
@@ -10,7 +10,7 @@ This reverts commit 6a4c7c1258ffecc26324b034c9091373bf0272dd.
  1 file changed, 50 insertions(+)
 
 diff --git a/build/tasks/kernel.mk b/build/tasks/kernel.mk
-index b42d86d..d0263d3 100644
+index 9c798d68..eeba2c0d 100644
 --- a/build/tasks/kernel.mk
 +++ b/build/tasks/kernel.mk
 @@ -151,6 +151,9 @@ endif
@@ -21,9 +21,9 @@ index b42d86d..d0263d3 100644
 +KERNEL_HEADERS_INSTALL_DEPS := $(KERNEL_OUT)/.headers_install_deps
 +
  ifeq ($(NEED_KERNEL_MODULE_ROOT),true)
- KERNEL_MODULES_INSTALL := root
- KERNEL_MODULES_OUT := $(TARGET_ROOT_OUT)/lib/modules
-@@ -252,6 +255,53 @@ $(TARGET_KERNEL_MODULES): TARGET_KERNEL_BINARIES
+ KERNEL_MODULES_OUT := $(TARGET_ROOT_OUT)
+ KERNEL_DEPMOD_STAGING_DIR := $(call intermediates-dir-for,PACKAGING,depmod_recovery)
+@@ -263,6 +266,53 @@ $(TARGET_KERNEL_MODULES): TARGET_KERNEL_BINARIES
  
  $(TARGET_PREBUILT_INT_KERNEL): $(TARGET_KERNEL_MODULES)
  
@@ -78,5 +78,5 @@ index b42d86d..d0263d3 100644
  kerneltags: $(KERNEL_CONFIG)
  	$(hide) mkdir -p $(KERNEL_OUT)
 -- 
-2.17.1
+2.21.0
 
