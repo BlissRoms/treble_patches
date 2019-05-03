@@ -1,7 +1,7 @@
-From bc49de4e6f2bcf1deed8fb6dcd8b65d5e0a30570 Mon Sep 17 00:00:00 2001
+From a26c82a5d2a5a250608b6fe233d6beb3f5939683 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Thu, 3 Jan 2019 17:50:03 +0100
-Subject: [PATCH 4/4] Read SDK version override from property
+Subject: [PATCH 2/2] Read SDK version override from property
 
 Change-Id: I88ca5d0bde15ee4f2b2bd1255e98f9592973dbf9
 ---
@@ -33,5 +33,5 @@ index 951351c32..0283abb19 100644
  
    std::vector<android_namespace_t*> created_namespaces;
 -- 
-2.17.1
+2.21.0
 
