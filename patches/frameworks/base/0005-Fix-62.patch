@@ -1,4 +1,4 @@
-From 658be986bca32ad68dda0cbd2fed9ff684077b0a Mon Sep 17 00:00:00 2001
+From 1d862c2a56e03941f49dc58172afd9c00a519264 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 30 May 2018 14:05:30 +0200
 Subject: [PATCH 05/28] Fix(?) #62

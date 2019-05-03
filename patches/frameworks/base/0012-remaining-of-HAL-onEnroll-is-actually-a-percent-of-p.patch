@@ -1,4 +1,4 @@
-From 8b8151519a0fe385ae3a682a837ffd7c674fc883 Mon Sep 17 00:00:00 2001
+From 3368e7c1d0b3a048ac3b5bb1fa3b75aa0aae62d3 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 2 Jul 2018 23:36:39 +0200
 Subject: [PATCH 12/28] "remaining" of HAL onEnroll is actually a percent of

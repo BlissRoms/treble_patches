@@ -1,4 +1,4 @@
-From 1c50acac96d1a3aea9acd474db48fcfeb17adf0c Mon Sep 17 00:00:00 2001
+From 8e555b45dff0bb454adabe8e020a4da62d0e4a4f Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 6 Aug 2018 20:01:44 +0200
 Subject: [PATCH 14/28] Change SignalStrentgh to change behaviour based on

@@ -1,4 +1,4 @@
-From d4bd8d2ae0fba3accc9e0ad12ec825bbd87ab0ac Mon Sep 17 00:00:00 2001
+From 60787a0f8cd1dc8f67980992b6267c6bf1f83b2f Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 27 Aug 2018 00:47:13 +0200
 Subject: [PATCH 20/28] Add a property toggle to enable high brightness range

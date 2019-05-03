@@ -1,4 +1,4 @@
-From 7ce8bffed817e20a5f79fed31b62dfaa6e8ddebc Mon Sep 17 00:00:00 2001
+From 2cdac8c0882c5df9e73019adacff8b67a491ce1d Mon Sep 17 00:00:00 2001
 From: Song Fuchang <song.fc@gmail.com>
 Date: Sun, 17 Jun 2018 22:39:37 +0800
 Subject: [PATCH 10/28] Fix typo on fnmatch return value check

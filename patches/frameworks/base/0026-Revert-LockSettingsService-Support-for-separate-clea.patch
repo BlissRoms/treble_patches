@@ -1,4 +1,4 @@
-From bbccdea5094fdebb4e238c731699f434dd0bf708 Mon Sep 17 00:00:00 2001
+From 5e4bf328d5d2c884b85ea2a5c1ba52380e0f77e6 Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
 Date: Thu, 25 Apr 2019 05:34:02 +0200
 Subject: [PATCH 26/28] Revert "LockSettingsService: Support for separate clear

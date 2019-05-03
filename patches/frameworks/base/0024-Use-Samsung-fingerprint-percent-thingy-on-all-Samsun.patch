@@ -1,4 +1,4 @@
-From 85cf9e48af84f9b3d57828b491d2c6c406c3553b Mon Sep 17 00:00:00 2001
+From 2fc6b6b2f8d30fee2fb32ac327ea0a04edc1592f Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 9 Dec 2018 16:31:44 +0100
 Subject: [PATCH 24/28] Use Samsung fingerprint percent thingy on all Samsung

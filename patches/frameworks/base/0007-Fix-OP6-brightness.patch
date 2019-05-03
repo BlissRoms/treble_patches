@@ -1,4 +1,4 @@
-From 47703e85e3b6d3b04fe0ae9746565481368815ba Mon Sep 17 00:00:00 2001
+From e10fac35f4a0e7b03046260ce93dc9b820349a16 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <pierre-hugues.husson@softathome.com>
 Date: Thu, 7 Jun 2018 13:42:02 +0200
 Subject: [PATCH 07/28] Fix OP6 brightness

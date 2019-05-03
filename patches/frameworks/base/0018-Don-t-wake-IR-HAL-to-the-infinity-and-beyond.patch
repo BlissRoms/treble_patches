@@ -1,4 +1,4 @@
-From d406d29e41b6c37744e03444336730779a2b1241 Mon Sep 17 00:00:00 2001
+From 96d882452fbeb23540987f04dd41721c1ba0e89b Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 21 Aug 2018 22:24:02 +0200
 Subject: [PATCH 18/28] Don't wake IR HAL to the infinity and beyond

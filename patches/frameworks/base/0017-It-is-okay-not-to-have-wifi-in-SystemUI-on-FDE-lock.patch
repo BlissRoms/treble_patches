@@ -1,4 +1,4 @@
-From 209ef1fd6103ea99db0775692ca74d9c24dca34f Mon Sep 17 00:00:00 2001
+From d8a220a78600edaecefcf36b06dd05405562ba81 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 20 Aug 2018 22:27:02 +0200
 Subject: [PATCH 17/28] It is okay not to have wifi in SystemUI (on FDE lock)
