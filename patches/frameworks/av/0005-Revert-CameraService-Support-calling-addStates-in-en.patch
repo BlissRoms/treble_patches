@@ -1,7 +1,7 @@
-From 7f357fe17ae21f459306ea544ef24b083d41bf0a Mon Sep 17 00:00:00 2001
+From ce88ebbf673e7825c4f924db09aade47b340adcc Mon Sep 17 00:00:00 2001
 From: Jon West <electrikjesus@gmail.com>
 Date: Wed, 17 Apr 2019 20:42:36 -0400
-Subject: [PATCH 5/6] Revert "CameraService: Support calling addStates in
+Subject: [PATCH 5/5] Revert "CameraService: Support calling addStates in
  enumerateProviders"
 
 This reverts commit 2fa8357eeacc88f87c49c7457c94f679cb3b6495.
@@ -69,5 +69,5 @@ index 607e2d23b..157f769a3 100644
              updateStatus(newStatus, id);
          } else {
 -- 
-2.17.1
+2.21.0
 

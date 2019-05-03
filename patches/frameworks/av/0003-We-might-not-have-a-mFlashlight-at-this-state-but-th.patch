@@ -1,7 +1,7 @@
-From 1a48acacf69713582aba409e4b710a91921e78c5 Mon Sep 17 00:00:00 2001
+From 8585c0c495abb6b1c8eb7d064cee7f004278d595 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 19 Aug 2018 23:05:26 +0200
-Subject: [PATCH 3/6] We might not have a mFlashlight at this state, but that's
+Subject: [PATCH 3/5] We might not have a mFlashlight at this state, but that's
  ok
 
 ---
@@ -22,5 +22,5 @@ index ba69bddaf..607e2d23b 100644
          mTorchStatusMap.add(id, TorchModeStatus::AVAILABLE_OFF);
      }
 -- 
-2.17.1
+2.21.0
 
