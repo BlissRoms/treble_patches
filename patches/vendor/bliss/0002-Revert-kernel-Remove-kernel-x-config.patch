@@ -1,4 +1,4 @@
-From 68745b9d232ae2ad1204401833727c00063138b4 Mon Sep 17 00:00:00 2001
+From 62a3784faec82ee3693c3fe79719a12c2e400e2f Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
 Date: Mon, 3 Dec 2018 10:55:52 -0500
 Subject: [PATCH 02/17] Revert "kernel: Remove kernel{x}config"
@@ -9,7 +9,7 @@ This reverts commit 12c4070d98e0bb69869874d8fcaa22769a07d994.
  1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/build/tasks/kernel.mk b/build/tasks/kernel.mk
-index aaa6b6cd..a6642534 100644
+index de5a7988..b4849a98 100644
 --- a/build/tasks/kernel.mk
 +++ b/build/tasks/kernel.mk
 @@ -262,7 +262,18 @@ kerneltags: $(KERNEL_CONFIG)

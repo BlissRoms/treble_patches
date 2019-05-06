@@ -1,7 +1,7 @@
-From 332dbca7e953068df59e2cceb1545eb6bad96544 Mon Sep 17 00:00:00 2001
+From 8308720b9692814cb9bf41b835fa2ef9a708dcc2 Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
-Date: Fri, 3 May 2019 14:50:22 +0200
-Subject: [PATCH 15/17] Revert "kernel.mk: Support kernels that use LTO"
+Date: Mon, 6 May 2019 20:02:46 +0200
+Subject: [PATCH 16/17] Revert "kernel.mk: Support kernels that use LTO"
 
 This reverts commit 811524eef488f81295c876b669d8ec7a6cad9cea.
 ---

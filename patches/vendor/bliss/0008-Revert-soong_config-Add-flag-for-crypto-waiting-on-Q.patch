@@ -1,4 +1,4 @@
-From 9cd22c7495ff6865ec764ac83ce49c7bfda86fc4 Mon Sep 17 00:00:00 2001
+From 6f3d8131beeb07a7feb9e99987018f6f29493ee1 Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
 Date: Wed, 19 Dec 2018 17:06:59 +0100
 Subject: [PATCH 08/17] Revert "soong_config: Add flag for crypto waiting on

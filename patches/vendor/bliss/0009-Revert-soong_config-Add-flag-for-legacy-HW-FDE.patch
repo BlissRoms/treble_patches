@@ -1,4 +1,4 @@
-From d45a6046c187c16f912d6250d0bd7dae0e06e83e Mon Sep 17 00:00:00 2001
+From 68de4a47218f81cb6d2e75d48d497e0448a8ee15 Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
 Date: Wed, 19 Dec 2018 17:07:12 +0100
 Subject: [PATCH 09/17] Revert "soong_config: Add flag for legacy HW FDE"

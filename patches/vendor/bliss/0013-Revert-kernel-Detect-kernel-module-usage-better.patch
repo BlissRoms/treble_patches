@@ -1,7 +1,7 @@
-From 185f7500ccc2876cf8bf2fe0433ae7b0f70550ce Mon Sep 17 00:00:00 2001
+From 5c65767ed0316f4c8227835c258451607b39ef75 Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
-Date: Fri, 3 May 2019 14:49:43 +0200
-Subject: [PATCH 12/17] Revert "kernel: Detect kernel module usage better"
+Date: Mon, 6 May 2019 20:01:57 +0200
+Subject: [PATCH 13/17] Revert "kernel: Detect kernel module usage better"
 
 This reverts commit fd354f2a6a73337bc89dbd77ded583617603edb0.
 ---

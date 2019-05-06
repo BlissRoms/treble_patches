@@ -1,4 +1,4 @@
-From 3f9a9d9c86cb260124124afd8938c6715236098c Mon Sep 17 00:00:00 2001
+From 8ec2835b3f921b6f21868e2b61b23d8ff8889a72 Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
 Date: Mon, 3 Dec 2018 10:55:28 -0500
 Subject: [PATCH 01/17] Revert "verity_tool: Implement status getter"

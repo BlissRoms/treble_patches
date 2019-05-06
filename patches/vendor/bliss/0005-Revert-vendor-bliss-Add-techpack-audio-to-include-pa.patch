@@ -1,4 +1,4 @@
-From f3436b1722f4271e951cb9321193a84d7d1854d6 Mon Sep 17 00:00:00 2001
+From 783f3d6c490ce524063528ed4ba51a7280a8c62d Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
 Date: Mon, 3 Dec 2018 10:56:58 -0500
 Subject: [PATCH 05/17] Revert "vendor/bliss: Add techpack/audio to include

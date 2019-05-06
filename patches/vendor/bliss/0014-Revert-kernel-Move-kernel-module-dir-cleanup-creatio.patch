@@ -1,7 +1,7 @@
-From 5a2a16ba3c0669c148a1e500d7c153debaa5f09f Mon Sep 17 00:00:00 2001
+From 4e33951109cb6188e0a5b144838aec3e267351a9 Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
-Date: Fri, 3 May 2019 14:49:52 +0200
-Subject: [PATCH 13/17] Revert "kernel: Move kernel module dir cleanup/creation
+Date: Mon, 6 May 2019 20:02:05 +0200
+Subject: [PATCH 14/17] Revert "kernel: Move kernel module dir cleanup/creation
  to module install target"
 
 This reverts commit bfc20a2ec6d7d5d3bf90e6273e2406f5f2259508.

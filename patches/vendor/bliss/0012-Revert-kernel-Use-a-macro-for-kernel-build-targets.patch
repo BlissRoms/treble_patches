@@ -1,7 +1,7 @@
-From 9afa3ceca47aa1db7f1f2a661d6c75fac6631a27 Mon Sep 17 00:00:00 2001
+From 5a0d02bec98a0dc637a09f7b507196ec98aac305 Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
-Date: Fri, 3 May 2019 14:49:33 +0200
-Subject: [PATCH 11/17] Revert "kernel: Use a macro for kernel build targets"
+Date: Mon, 6 May 2019 20:01:47 +0200
+Subject: [PATCH 12/17] Revert "kernel: Use a macro for kernel build targets"
 
 This reverts commit 50ec7ed057150c875342d461d34fe2cc02dea12d.
 ---

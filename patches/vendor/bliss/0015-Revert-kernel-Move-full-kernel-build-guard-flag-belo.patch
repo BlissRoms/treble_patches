@@ -1,7 +1,7 @@
-From 50a889acb0bf5b93aedbb8d762e3b1eb1748f26b Mon Sep 17 00:00:00 2001
+From b2f7c8c8d7d30289272a3ab75b2c4fdc0857e5a7 Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
-Date: Fri, 3 May 2019 14:50:01 +0200
-Subject: [PATCH 14/17] Revert "kernel: Move full kernel build guard flag below
+Date: Mon, 6 May 2019 20:02:13 +0200
+Subject: [PATCH 15/17] Revert "kernel: Move full kernel build guard flag below
  all targets"
 
 This reverts commit 7eba3bc17cf826bb0592d3ce06a2d57e9480df1a.

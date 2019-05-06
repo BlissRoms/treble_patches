@@ -1,4 +1,4 @@
-From 31ddd59654c1e4cbef68e60ca8cf59f05a374a44 Mon Sep 17 00:00:00 2001
+From 94351db55a8e644d7c162d44031b198c50a498ab Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
 Date: Mon, 3 Dec 2018 10:57:16 -0500
 Subject: [PATCH 07/17] Revert "vendor/bliss: Add soong generator module type"

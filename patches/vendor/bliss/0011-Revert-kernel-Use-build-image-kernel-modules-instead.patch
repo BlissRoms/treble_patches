@@ -1,7 +1,7 @@
-From 51c9997f5ec7f6735480441b045a129dc327416f Mon Sep 17 00:00:00 2001
+From ef557446666508cf3b63dfa01458104e9e16bd18 Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
-Date: Fri, 3 May 2019 14:49:16 +0200
-Subject: [PATCH 10/17] Revert "kernel: Use build-image-kernel-modules instead
+Date: Mon, 6 May 2019 20:01:39 +0200
+Subject: [PATCH 11/17] Revert "kernel: Use build-image-kernel-modules instead
  of copying it"
 
 This reverts commit dbda78c5e62807ec700be086216d5e2cbb28330f.
