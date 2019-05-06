@@ -1,4 +1,4 @@
-From e053b4937154462cd42435631291f9d676c7d942 Mon Sep 17 00:00:00 2001
+From ae3379f770f270fd06e606c22aef55494300efae Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
 Date: Wed, 19 Dec 2018 17:02:02 +0100
 Subject: [PATCH 5/8] Revert "vold: Wrapped key support for FBE"
@@ -586,5 +586,5 @@ index 3a54390..9f5b21a 100644
  
      void unlockUserKey(int userId, int userSerial, @utf8InCpp String token, @utf8InCpp String secret);
 -- 
-2.17.1
+2.21.0
 

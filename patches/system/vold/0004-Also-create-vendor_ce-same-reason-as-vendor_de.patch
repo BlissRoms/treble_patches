@@ -1,7 +1,7 @@
-From b54608b7f7c3a16b03e1edd7cdabcb31f692c90b Mon Sep 17 00:00:00 2001
+From 10f180991872520925c9549830a73a176293c583 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 20 Aug 2018 22:38:08 +0200
-Subject: [PATCH 4/4] Also create vendor_ce (same reason as vendor_de)
+Subject: [PATCH 4/8] Also create vendor_ce (same reason as vendor_de)
 
 ---
  Ext4Crypt.cpp | 2 ++
@@ -21,5 +21,5 @@ index 263648b..56650fe 100644
              if (!prepare_dir(system_ce_path, 0770, AID_SYSTEM, AID_SYSTEM)) return false;
              if (!prepare_dir(misc_ce_path, 01771, AID_SYSTEM, AID_MISC)) return false;
 -- 
-2.17.1
+2.21.0
 

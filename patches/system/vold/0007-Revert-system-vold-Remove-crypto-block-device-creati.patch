@@ -1,4 +1,4 @@
-From 4c74a335da08da2afd858268b890972661452ac3 Mon Sep 17 00:00:00 2001
+From e9a0844ed2609aba7351c45bc5301437aeb1eb25 Mon Sep 17 00:00:00 2001
 From: Jackeagle <jackeagle102@gmail.com>
 Date: Wed, 19 Dec 2018 17:02:18 +0100
 Subject: [PATCH 7/8] Revert "system: vold: Remove crypto block device
@@ -201,10 +201,10 @@ index ac484d8..fd66672 100644
 -#endif
  #endif
 diff --git a/cryptfs.cpp b/cryptfs.cpp
-index c14c1ad..3452fe3 100644
+index 6352de5..bea9b2f 100644
 --- a/cryptfs.cpp
 +++ b/cryptfs.cpp
-@@ -1758,9 +1758,6 @@ static void cryptfs_trigger_restart_min_framework()
+@@ -1816,9 +1816,6 @@ static void cryptfs_trigger_restart_min_framework()
  static int cryptfs_restart_internal(int restart_main)
  {
      char crypto_blkdev[MAXPATHLEN];
@@ -214,7 +214,7 @@ index c14c1ad..3452fe3 100644
      int rc = -1;
      static int restart_successful = 0;
  
-@@ -1808,24 +1805,6 @@ static int cryptfs_restart_internal(int restart_main)
+@@ -1866,24 +1863,6 @@ static int cryptfs_restart_internal(int restart_main)
       * the tmpfs filesystem, and mount the real one.
       */
  
@@ -239,7 +239,7 @@ index c14c1ad..3452fe3 100644
      property_get("ro.crypto.fs_crypto_blkdev", crypto_blkdev, "");
      if (strlen(crypto_blkdev) == 0) {
          SLOGE("fs_crypto_blkdev not set\n");
-@@ -1833,7 +1812,6 @@ static int cryptfs_restart_internal(int restart_main)
+@@ -1891,7 +1870,6 @@ static int cryptfs_restart_internal(int restart_main)
      }
  
      if (! (rc = wait_and_unmount(DATA_MNT_POINT, true)) ) {
@@ -247,7 +247,7 @@ index c14c1ad..3452fe3 100644
          /* If ro.crypto.readonly is set to 1, mount the decrypted
           * filesystem readonly.  This is used when /data is mounted by
           * recovery mode.
-@@ -1857,26 +1835,15 @@ static int cryptfs_restart_internal(int restart_main)
+@@ -1915,26 +1893,15 @@ static int cryptfs_restart_internal(int restart_main)
              SLOGE("Failed to setexeccon");
              return -1;
          }
@@ -274,7 +274,7 @@ index c14c1ad..3452fe3 100644
                  if (--retries) {
                      sleep(RETRY_MOUNT_DELAY_SECONDS);
                  } else {
-@@ -1922,9 +1889,7 @@ static int cryptfs_restart_internal(int restart_main)
+@@ -1980,9 +1947,7 @@ static int cryptfs_restart_internal(int restart_main)
  
          /* Give it a few moments to get started */
          sleep(1);
@@ -284,7 +284,7 @@ index c14c1ad..3452fe3 100644
  
      if (rc == 0) {
          restart_successful = 1;
-@@ -2026,14 +1991,12 @@ static int test_mount_hw_encrypted_fs(struct crypt_mnt_ftr* crypt_ftr,
+@@ -2084,14 +2049,12 @@ static int test_mount_hw_encrypted_fs(struct crypt_mnt_ftr* crypt_ftr,
      }
      else {
        if (is_ice_enabled()) {
@@ -299,7 +299,7 @@ index c14c1ad..3452fe3 100644
        } else {
          if (create_crypto_blk_dev(crypt_ftr, decrypted_master_key,
                              real_blkdev, crypto_blkdev, label, 0)) {
-@@ -2053,9 +2016,6 @@ static int test_mount_hw_encrypted_fs(struct crypt_mnt_ftr* crypt_ftr,
+@@ -2111,9 +2074,6 @@ static int test_mount_hw_encrypted_fs(struct crypt_mnt_ftr* crypt_ftr,
  
      /* Save the name of the crypto block device
       * so we can mount it when restarting the framework. */
@@ -309,7 +309,7 @@ index c14c1ad..3452fe3 100644
      property_set("ro.crypto.fs_crypto_blkdev", crypto_blkdev);
      master_key_saved = 1;
    }
-@@ -2813,12 +2773,8 @@ int cryptfs_enable_internal(int crypt_type, const char* passwd, int no_ui) {
+@@ -2871,12 +2831,8 @@ int cryptfs_enable_internal(int crypt_type, const char* passwd, int no_ui) {
      decrypt_master_key(passwd, decrypted_master_key, &crypt_ftr, 0, 0);
  #ifdef CONFIG_HW_DISK_ENCRYPTION
      if (is_hw_disk_encryption((char*)crypt_ftr.crypto_type_name) && is_ice_enabled())
@@ -322,7 +322,7 @@ index c14c1ad..3452fe3 100644
      else
        create_crypto_blk_dev(&crypt_ftr, decrypted_master_key, real_blkdev, crypto_blkdev,
                            CRYPTO_BLOCK_DEVICE, 0);
-@@ -2831,12 +2787,6 @@ int cryptfs_enable_internal(int crypt_type, const char* passwd, int no_ui) {
+@@ -2889,12 +2845,6 @@ int cryptfs_enable_internal(int crypt_type, const char* passwd, int no_ui) {
      rc = 0;
      if (previously_encrypted_upto) {
          __le8 hash_first_block[SHA256_DIGEST_LENGTH];
@@ -335,7 +335,7 @@ index c14c1ad..3452fe3 100644
          rc = cryptfs_SHA256_fileblock(crypto_blkdev, hash_first_block);
  
          if (!rc && memcmp(hash_first_block, crypt_ftr.hash_first_block,
-@@ -2846,23 +2796,11 @@ int cryptfs_enable_internal(int crypt_type, const char* passwd, int no_ui) {
+@@ -2904,23 +2854,11 @@ int cryptfs_enable_internal(int crypt_type, const char* passwd, int no_ui) {
          }
      }
  
@@ -359,7 +359,7 @@ index c14c1ad..3452fe3 100644
      /* Calculate checksum if we are not finished */
      if (!rc && crypt_ftr.encrypted_upto != crypt_ftr.fs_size) {
          rc = cryptfs_SHA256_fileblock(crypto_blkdev,
-@@ -2874,12 +2812,7 @@ int cryptfs_enable_internal(int crypt_type, const char* passwd, int no_ui) {
+@@ -2932,12 +2870,7 @@ int cryptfs_enable_internal(int crypt_type, const char* passwd, int no_ui) {
      }
  
      /* Undo the dm-crypt mapping whether we succeed or not */
@@ -373,5 +373,5 @@ index c14c1ad..3452fe3 100644
      if (! rc) {
          /* Success */
 -- 
-2.17.1
+2.21.0
 

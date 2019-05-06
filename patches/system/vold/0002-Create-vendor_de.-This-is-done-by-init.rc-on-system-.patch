@@ -1,7 +1,7 @@
-From f93afbee37f5fa6ac16d451ded9e475b76d0d127 Mon Sep 17 00:00:00 2001
+From a6daf6e1568773868ae40be990908ccbb790e982 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 14 Aug 2018 20:54:08 +0200
-Subject: [PATCH 2/4] Create vendor_de. This is done by /init.rc on
+Subject: [PATCH 2/8] Create vendor_de. This is done by /init.rc on
  system-as-root device
 
 ---
@@ -22,5 +22,5 @@ index 3a7b5d4..263648b 100644
              if (!prepare_dir(system_legacy_path, 0700, AID_SYSTEM, AID_SYSTEM)) return false;
  #if MANAGE_MISC_DIRS
 -- 
-2.17.1
+2.21.0
 
