@@ -1,0 +1,26 @@
+From 60a910a3ff0a0f0498afcca81dafcca86bc830e0 Mon Sep 17 00:00:00 2001
+From: Jackeagle <jackeagle102@gmail.com>
+Date: Mon, 6 May 2019 20:11:10 +0200
+Subject: [PATCH] Revert "tinycompress: Use generated kernel headers"
+
+This reverts commit fbe2bd5c3d670234c3c92f875986acc148e6d792.
+---
+ Android.bp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Android.bp b/Android.bp
+index e79b204..f0000f1 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -18,7 +18,7 @@ cc_library_shared {
+         "libutils",
+     ],
+     header_libs: [
+-        "generated_kernel_headers",
++        "device_kernel_headers",
+     ],
+ }
+ 
+-- 
+2.21.0
+
